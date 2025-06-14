@@ -11,6 +11,12 @@
   </head>
 
   <body>
+    <%= react_component "Header/Header", { loggedIn: logged_in?, votingBoothInUse: @voting_booth.in_use?, userEmail: current_user&.email } %>
+
+    <%= react_component "AlertBox/AlertBox", { idx: 0, variant: variant_helper, message: (flash[:notice] || flash[:alert]) } %>
+
     <%= yield %>
+
+    <%= react_component "Footer/Footer" %>
   </body>
 </html>

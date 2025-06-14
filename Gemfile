@@ -17,6 +17,12 @@ gem "puma", ">= 5.0"
 gem "shakapacker", "= 8.1"
 gem "react-rails", "= 3.2"
 
+# Encrypted Password
+gem "bcrypt"
+
+# Serializers
+gem "active_model_serializers"
+
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 

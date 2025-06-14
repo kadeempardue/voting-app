@@ -2,12 +2,12 @@ import React from "react";
 import Wrapper from './Wrapper';
 import AuthForm from "./AuthForm/AuthForm";
 
-const Home = () => {
+const RegistrationForm = ({ user }) => {
   return (
     <Wrapper>
-      <AuthForm authAction="Sign In" />
+      <AuthForm authAction="Sign Up" />
     </Wrapper>
   );
 };
 
-export default Home;
+export default RegistrationForm;
