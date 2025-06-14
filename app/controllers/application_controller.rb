@@ -5,5 +5,6 @@ class ApplicationController < ActionController::Base
 
   def set_voting_booth
     @voting_booth = VotingBooth.first
+    @voting_booth.reset_active_voter if @voting_booth&.active_voter_expired?
   end
 end
