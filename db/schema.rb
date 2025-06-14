@@ -11,6 +11,9 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2025_06_13_144449) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "candidates", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -26,9 +29,9 @@ ActiveRecord::Schema[7.0].define(version: 2025_06_13_144449) do
   end
 
   create_table "votes", force: :cascade do |t|
-    t.integer "voting_booth_id", null: false
-    t.integer "election_id", null: false
-    t.integer "voter_id", null: false
+    t.bigint "voting_booth_id", null: false
+    t.bigint "election_id", null: false
+    t.bigint "voter_id", null: false
     t.string "voter_email", null: false
     t.string "voter_zip_code", null: false
     t.datetime "created_at", null: false
