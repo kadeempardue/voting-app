@@ -37,6 +37,8 @@ Authentication in the login form bypasses actually checking the password, howeve
 
 I added specs for the models and features (integration tests).
 
+To run specs just run `rspec` or `rspec spec/`
+
 #### FactoryBot and Should Matchers
 
 I added some pretty common gems so that Rspec can use factories instead of fixtures and some helpful validation matchers.
