@@ -10,6 +10,8 @@ It's a standard Rails app using Postgres so you'll just want to follow the readm
 brew install postgresql@14
 brew services start postgresql@14
 
+bundle install
+
 rails db:create
 rails db:migrate
 rails db:seed
