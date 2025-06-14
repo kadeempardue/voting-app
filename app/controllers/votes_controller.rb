@@ -12,10 +12,10 @@ class VotesController < ApplicationController
     flash[:notice] = "Vote cast successfully"
     render json: { success: true }, status: :ok
   rescue VotingBoothService::BoothInUseError
-    flash[:alert] = "Could not cast vote. Please try again."
+    flash[:alert] = "Could not cast vote.#{ ' Time expired.' if @voting_booth.active_voter_expired? } Please try again."
     render json: { success: false }, status: :unprocessable_entity
   rescue VotingBoothService::UnauthorizedWriteInError
-    flash[:alert] = "Vote cast window expired. Please try again."
+    flash[:alert] = "Candidate write-in is not allowed. Please try again."
     render json: { success: false }, status: :unprocessable_entity
   end
 

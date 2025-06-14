@@ -17,7 +17,6 @@ class VotingBoothService
       Vote.transaction do
         @voting_booth = VotingBooth.lock.first # row-level DB lock
         raise BoothInUseError unless @voting_booth.occupied? && @voting_booth.active_voter_id == voter.id
-        
         raise UnauthorizedWriteInError if unauthorized_write_in?(vote_params[:election_attributes]&.[](:name))
   
         @vote = Vote.new
