@@ -21,7 +21,7 @@ class VotingBoothController < ApplicationController
   end
 
   def enter_booth
-    VotingBoothService.new.enter_booth!(current_user)
+    VotingBoothService.enter_booth!(current_user)
     set_voting_booth # Refresh voting booth to get the latest state
   rescue VotingBoothService::BoothInUseError
     redirect_to root_path, alert: "Voting booth is currently in use: #{@voting_booth.time_remaining} seconds remaining"

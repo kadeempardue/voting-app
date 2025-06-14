@@ -8,13 +8,15 @@ class VotesController < ApplicationController
   end
 
   def create
-    if @vote = VoteCreateService.new(current_user, vote_params).call
-      flash[:notice] = "Vote cast successfully"
-      render json: { success: true }, status: :ok
-    else
-      flash[:alert] = "Could not cast vote. Please try again."
-      render json: { success: false }, status: :unprocessable_entity
-    end
+    @vote = VotingBoothService.cast_vote!(current_user, vote_params)
+    flash[:notice] = "Vote cast successfully"
+    render json: { success: true }, status: :ok
+  rescue VotingBoothService::BoothInUseError
+    flash[:alert] = "Could not cast vote. Please try again."
+    render json: { success: false }, status: :unprocessable_entity
+  rescue VotingBoothService::UnauthorizedWriteInError
+    flash[:alert] = "Vote cast window expired. Please try again."
+    render json: { success: false }, status: :unprocessable_entity
   end
 
   private
