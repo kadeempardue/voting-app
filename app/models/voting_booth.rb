@@ -11,6 +11,10 @@ class VotingBooth < ApplicationRecord
     active_voter_expires_at < Time.current
   end
 
+  def occupied?
+    in_use? && active_voter_id.present? && !active_voter_expired?
+  end
+
   def reset_active_voter
     self.active_voter_id = nil
     self.active_voter_expires_at = nil
