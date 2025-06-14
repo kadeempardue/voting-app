@@ -63,3 +63,30 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 end
+
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
+    with.library :rails
+  end
+end
+
+RSpec.configure do |config|
+  config.include FactoryBot::Syntax::Methods
+end
+
+Capybara.register_driver :headless_chrome do |app|
+  Capybara::Selenium::Driver.new(
+    app,
+    browser: :chrome,
+    options: Selenium::WebDriver::Chrome::Options.new.tap do |opts|
+      opts.add_argument('--headless') unless ENV['SHOW_BROWSER']
+      opts.add_argument('--disable-gpu')
+      opts.add_argument('--window-size=1400,1400')
+      opts.add_argument('--no-sandbox')
+      opts.add_argument('--disable-dev-shm-usage')
+    end
+  )
+end
+
+Capybara.javascript_driver = :headless_chrome

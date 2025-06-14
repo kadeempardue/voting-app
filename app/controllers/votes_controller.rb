@@ -12,7 +12,7 @@ class VotesController < ApplicationController
       flash[:notice] = "Vote cast successfully"
       render json: { success: true }, status: :ok
     else
-      flash[:alert] = "Failed to cast vote"
+      flash[:alert] = "Could not cast vote. Please try again."
       render json: { success: false }, status: :unprocessable_entity
     end
   end
@@ -24,7 +24,7 @@ class VotesController < ApplicationController
   end
 
   def reset_if_active_voter_expired
-    @voting_booth.reset_active_voter if @voting_booth.active_voter_expired?
+    @voting_booth.reset_active_voter if @voting_booth&.active_voter_expired?
   end
 
   def redirect_if_already_voted

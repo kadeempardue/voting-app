@@ -40,7 +40,7 @@ const AuthForm = ({ authAction }) => {
               <h1>
                   <span className="text-inline">{ authAction } to
                   <Image
-                      alt=""
+                      alt={`${authAction} Logo`}
                       src={Logo}
                       width="100"
                       height="40"

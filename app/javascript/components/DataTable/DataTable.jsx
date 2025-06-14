@@ -4,7 +4,7 @@ import Table from 'react-bootstrap/Table';
 const DataTable = ({ data = [] }) => {
 
   return (
-    <Table striped bordered hover responsive="sm">
+    <Table striped bordered hover responsive>
       {data && data.length > 0 && (
         <thead>
           <tr>

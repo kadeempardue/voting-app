@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>VotingApp</title>
+    <title>Vote Music Festivals</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,7 +11,7 @@
   </head>
 
   <body>
-    <%= react_component "Header/Header", { loggedIn: logged_in?, votingBoothInUse: @voting_booth.in_use?, userEmail: current_user&.email } %>
+    <%= react_component "Header/Header", { loggedIn: logged_in?, votingBoothInUse: @voting_booth&.in_use?, userEmail: current_user&.email } %>
 
     <%= react_component "AlertBox/AlertBox", { idx: 0, variant: variant_helper, message: (flash[:notice] || flash[:alert]) } %>
 

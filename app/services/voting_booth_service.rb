@@ -5,7 +5,7 @@ class VotingBoothService
 
   def enter_booth!(voter)
     VotingBooth.transaction do
-      raise BoothInUseError if @voting_booth.in_use? && @voting_booth.active_voter != voter
+      raise BoothInUseError if @voting_booth&.in_use? && @voting_booth.active_voter != voter
       @voting_booth.in_use = true
       @voting_booth.active_voter_id = voter.id
       @voting_booth.active_voter_expires_at = 30.seconds.from_now if @voting_booth.active_voter_expires_at.blank?
@@ -15,7 +15,7 @@ class VotingBoothService
 
   def cast_vote_with_lock!(voter, voting_booth)
     VotingBooth.transaction do
-      raise BoothInUseError unless @voting_booth.in_use? && @voting_booth.active_voter == voter
+      raise BoothInUseError unless @voting_booth&.in_use? && @voting_booth.active_voter == voter
 
       begin
         cast_vote

@@ -54,7 +54,7 @@ const VotingForm = ({ candidates = [] }) => {
         }
       }
       await axios.post('/votes', {vote: vote_params});
-      window.location.href = '/performers';
+      window.location.href = '/votes';
     } catch (error) {
       window.location.reload();
     }

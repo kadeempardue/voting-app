@@ -12,7 +12,7 @@ const Footer = () => {
       <Navbar bg="dark" variant="dark" fixed={heighAbove576 ? "bottom" : undefined}>
           <Navbar.Brand href="/">
           <Image
-              alt=""
+              alt="Footer Logo"
               src={Logo}
               width="50"
               height="20"

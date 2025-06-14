@@ -13,14 +13,6 @@
 ActiveRecord::Schema[7.0].define(version: 2025_06_13_144449) do
   create_table "candidates", force: :cascade do |t|
     t.string "name", null: false
-    t.string "genre", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "roles", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "key", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -29,10 +21,8 @@ ActiveRecord::Schema[7.0].define(version: 2025_06_13_144449) do
     t.string "email", null: false
     t.string "password_digest", null: false
     t.string "zip_code", null: false
-    t.integer "role_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["role_id"], name: "index_users_on_role_id"
   end
 
   create_table "votes", force: :cascade do |t|

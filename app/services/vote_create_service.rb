@@ -17,6 +17,7 @@ class VoteCreateService
     @vote.voting_booth = @voting_booth
     @vote.assign_attributes(vote_params) # Assigns candidate or write-in
     saved = @vote.save
+
     @voting_booth.reset_active_voter if saved
     saved
   end

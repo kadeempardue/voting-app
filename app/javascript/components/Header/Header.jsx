@@ -24,7 +24,7 @@ const Header = ({ loggedIn = false, votingBoothInUse = false, userEmail = "" }) 
         <Navbar bg="dark" variant="dark" expand="lg">
             <Navbar.Brand href="/">
             <Image
-                alt=""
+                alt="Header Logo"
                 src={Logo}
                 width="50"
                 height="20"
@@ -38,10 +38,11 @@ const Header = ({ loggedIn = false, votingBoothInUse = false, userEmail = "" }) 
                 <Nav.Link href="/votes" className={window.location.pathname === "/votes" ? "text-white" : ""}>Results</Nav.Link>
                 <NavDropdown title="Voting Booth" id="basic-nav-dropdown">
                     <NavDropdown.Item href="/voting_booth">
-                    Vote for a Candidate {votingBoothInUse && <Badge variant="danger">In Use</Badge>} {!votingBoothInUse && <Badge variant="success">Open</Badge>}
+                    Vote for a Candidate
                     </NavDropdown.Item>
                 </NavDropdown>
                 </Nav>
+                <Badge className="mr-2" variant={votingBoothInUse ? "danger" : "success"}>{votingBoothInUse ? "Voting Booth In Use" : "Voting Booth Open"}</Badge>
                 {!loggedIn && (
                   <Nav.Link href="/signup" className="mr-2 btn btn-link btn-secondary text-white">Sign Up</Nav.Link>
                 )}
