@@ -3,7 +3,15 @@ const { generateWebpackConfig } = require('shakapacker')
 
 const webpackConfig = generateWebpackConfig()
 
-const { sassLoader } = require('./sass.rules')
+const sassLoader = {
+  loader: 'sass-loader',
+  options: {
+    sassOptions: {
+      quietDeps: true,
+    },
+  },
+};
+
 
 // Apply the patch
 webpackConfig.module.rules.forEach(rule => {
