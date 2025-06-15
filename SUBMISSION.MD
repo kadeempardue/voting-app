@@ -53,8 +53,6 @@ Since the Rails app uses react-rails I figured I'd build all frontend components
 
 I chose to implement a Serializer to showcase how to serialize data back to the frontend.
 
-I chose to implement a VoteCreateService class to showcase encapsulated classes that handle specific or complex actions
-
 I chose to implement a VotingBooth to ensure that only 1 user can vote at a time (within 30 seconds), and that they can only vote once. Visual badges are displayed in the header to indicate to users when the voting booth is open or in use.
 
 I chose to use Bootstrap as my css framework of choice, specifically the react-bootstrap package which provides React based Bootstrap 4 components.
